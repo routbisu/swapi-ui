@@ -1,4 +1,3 @@
-import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { ThemeProvider } from "@emotion/react";
 import { defaultTheme } from "./themes/default";
@@ -20,11 +19,9 @@ const router = createBrowserRouter([
 ]);
 
 createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <ThemeProvider theme={defaultTheme}>
-      <Layout>
-        <RouterProvider router={router} />
-      </Layout>
-    </ThemeProvider>
-  </StrictMode>
+  <ThemeProvider theme={defaultTheme}>
+    <Layout>
+      <RouterProvider router={router} />
+    </Layout>
+  </ThemeProvider>
 );

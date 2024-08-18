@@ -6,6 +6,7 @@ export const StarWarsLogo: React.FC<{ height?: number }> = ({
   const logoWrapper = css`
     & svg {
       height: ${height}px;
+      width: auto;
     }
   `;
 

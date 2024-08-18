@@ -3,7 +3,12 @@ import { useTheme } from "@emotion/react";
 import React from "react";
 import { Typography } from "../Typography";
 import { Stack } from "../../layout/Stack";
-import { GenderFemale, GenderMale, Planet } from "@phosphor-icons/react";
+import {
+  GenderFemale,
+  GenderMale,
+  Icon as PhosphorIcon,
+  Planet,
+} from "@phosphor-icons/react";
 import { PersonAPIObject } from "../../../types";
 
 export type PersonCardProps = Pick<PersonAPIObject, "name" | "gender"> & {
@@ -34,7 +39,7 @@ export const PersonCard: React.FC<PersonCardProps> = ({
     }
   `;
 
-  let GenderIcon = undefined;
+  let GenderIcon: PhosphorIcon | undefined = undefined;
   if (gender?.toLowerCase() === "male") GenderIcon = GenderMale;
   else if (gender?.toLowerCase() === "female") GenderIcon = GenderFemale;
 

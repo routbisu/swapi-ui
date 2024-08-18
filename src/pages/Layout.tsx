@@ -6,7 +6,7 @@ export type LayoutProps = { children?: React.ReactNode };
 
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
   const container = css`
-    max-width: 1320px;
+    max-width: 960px;
     margin: auto;
     padding: 20px;
   `;
