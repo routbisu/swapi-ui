@@ -1,5 +1,8 @@
+import React from "react";
+import { StarWarsLogo } from "./components/media/StarWarsLogo";
+
 const App: React.FC = () => {
-  return <h1>Star wars explorer</h1>;
+  return <StarWarsLogo />;
 };
 
 export default App;
