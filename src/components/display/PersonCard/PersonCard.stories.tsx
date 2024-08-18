@@ -3,7 +3,11 @@ import { PersonCard } from "./PersonCard";
 
 const meta = {
   title: "PersonCard",
-  component: PersonCard,
+  component: (props) => (
+    <div style={{ width: 400 }}>
+      <PersonCard {...props} />
+    </div>
+  ),
   parameters: {
     layout: "centered",
   },

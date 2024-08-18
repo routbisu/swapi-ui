@@ -1,7 +1,7 @@
 import { css } from "@emotion/css";
 
 export const StarWarsLogo: React.FC<{ height?: number }> = ({
-  height = 100,
+  height = 130,
 }) => {
   const logoWrapper = css`
     & svg {

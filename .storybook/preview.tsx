@@ -2,6 +2,7 @@ import React from "react";
 import type { Preview } from "@storybook/react";
 import { ThemeProvider } from "@emotion/react";
 import { defaultTheme } from "../src/themes/default";
+import "../src/global.css";
 
 const preview: Preview = {
   parameters: {
