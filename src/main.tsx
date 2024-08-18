@@ -4,18 +4,18 @@ import { ThemeProvider } from "@emotion/react";
 import { defaultTheme } from "./themes/default";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Layout } from "./pages/Layout.tsx";
-import { CharactersList } from "./pages/CharactersList.tsx";
-import { CharacterDetails } from "./pages/CharacterDetails.tsx";
 import "./global.css";
+import { PeopleList } from "./pages/PeopleList.tsx";
+import { PersonDetails } from "./pages/PersonDetails.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <CharactersList />,
+    element: <PeopleList />,
   },
   {
-    path: "/character/:characterId",
-    element: <CharacterDetails />,
+    path: "/people/:peopleId",
+    element: <PersonDetails />,
   },
 ]);
 

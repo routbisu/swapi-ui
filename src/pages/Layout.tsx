@@ -13,6 +13,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   const header = css`
     text-align: center;
+    margin-bottom: 16px;
   `;
 
   return (
@@ -20,6 +21,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
       <div className={header}>
         <StarWarsLogo />
       </div>
+
       {children}
     </div>
   );

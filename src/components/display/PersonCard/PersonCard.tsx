@@ -4,11 +4,10 @@ import React from "react";
 import { Typography } from "../Typography";
 import { Stack } from "../../layout/Stack";
 import { GenderFemale, GenderMale, Planet } from "@phosphor-icons/react";
+import { PersonAPIObject } from "../../../types";
 
-export type PersonCardProps = {
-  name: string;
-  gender: string;
-  planet: string;
+export type PersonCardProps = Pick<PersonAPIObject, "name" | "gender"> & {
+  planet?: string;
   disableHover?: boolean;
 };
 

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { StarWarsLogo } from "./StarWarsLogo";
 
 const meta = {
-  title: "StarWarsLogo",
+  title: "Star Wars Logo",
   component: StarWarsLogo,
   parameters: {
     layout: "centered",
