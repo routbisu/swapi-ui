@@ -6,7 +6,11 @@ export type PersonCardProps = {
   planet: string;
 };
 
-export const Card: React.FC<PersonCardProps> = ({ name, gender, planet }) => {
+export const PersonCard: React.FC<PersonCardProps> = ({
+  name,
+  gender,
+  planet,
+}) => {
   return (
     <div>
       {name} {gender} {planet}
