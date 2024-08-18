@@ -1,6 +1,9 @@
 import { css } from "@emotion/css";
 import { useTheme } from "@emotion/react";
 import React from "react";
+import { Typography } from "../Typography";
+import { Stack } from "../../layout/Stack";
+import { GenderFemale, GenderMale, Planet } from "@phosphor-icons/react";
 
 export type PersonCardProps = {
   name: string;
@@ -16,16 +19,12 @@ export const PersonCard: React.FC<PersonCardProps> = ({
   disableHover,
 }) => {
   const theme = useTheme();
+
   /** Styles */
   const container = css`
     border: 1px solid ${theme.color.border.card};
     padding: 16px;
     border-radius: 4px;
-
-    & > h2 {
-      color: ${theme.color.text.primary};
-      ${theme.typography.heading2}
-    }
 
     &: hover {
       transition: 0.3s;
@@ -36,11 +35,30 @@ export const PersonCard: React.FC<PersonCardProps> = ({
     }
   `;
 
+  let GenderIcon = undefined;
+  if (gender?.toLowerCase() === "male") GenderIcon = GenderMale;
+  else if (gender?.toLowerCase() === "female") GenderIcon = GenderFemale;
+
+  const genderIconColor = `${theme.color.text.primary}66`;
+
   return (
     <div className={container}>
-      <h2>{name}</h2>
-      <p>Gender: {gender}</p>
-      <p>Home planet: {planet}</p>
+      <Stack direction="row" align="center" justify="space-between">
+        <Stack direction="column" gap={10}>
+          <Typography variant="h2">{name}</Typography>
+          <Stack direction="column" gap={8}>
+            <Typography variant="body2" color="secondary">
+              <Stack gap={8} align="center">
+                <Planet size={16} weight="fill" /> {planet}
+              </Stack>
+            </Typography>
+          </Stack>
+        </Stack>
+
+        {GenderIcon ? (
+          <GenderIcon size={32} weight="duotone" color={genderIconColor} />
+        ) : null}
+      </Stack>
     </div>
   );
 };

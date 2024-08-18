@@ -10,7 +10,10 @@ interface Text extends CSSObject {
 declare module "@emotion/react" {
   export interface Theme {
     typography: {
+      heading1: Text;
       heading2: Text;
+      body1: Text;
+      body2: Text;
     };
     color: {
       background: {

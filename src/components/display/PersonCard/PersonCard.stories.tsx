@@ -15,10 +15,18 @@ const meta = {
 
 export default meta;
 
-export const Primary: StoryObj<typeof meta> = {
+export const MaleCharacter: StoryObj<typeof meta> = {
   args: {
     name: "Luke Skywalker",
-    gender: "male",
-    planet: "Earth",
+    gender: "Male",
+    planet: "Tatooine",
+  },
+};
+
+export const FemaleCharacter: StoryObj<typeof meta> = {
+  args: {
+    name: "Leia Organa",
+    gender: "Female",
+    planet: "Alderaan",
   },
 };
