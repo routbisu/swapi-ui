@@ -18,6 +18,7 @@ import { Typography } from "../components/display/Typography";
 import { Textfield } from "../components/inputs/Textfield";
 import { PersonDetails } from "./PersonDetails";
 import { Favourites } from "./Favourites";
+import { DarthVaderGraphic } from "../components/media/DarthVaderGraphic";
 
 const PeopleListLoadingView: React.FC<{ cardsCount?: number }> = ({
   cardsCount = 10,
@@ -88,6 +89,20 @@ export const PeopleList = () => {
     return <Favourites onClose={() => setShowFavorites(false)} />;
   }
 
+  const noDataView = (
+    <div style={{ padding: 50 }}>
+      <Stack direction="column" align="center" gap={20}>
+        <DarthVaderGraphic />
+        <Stack direction="column" align="center" gap={10}>
+          <Typography variant="h2">No people found</Typography>
+          <Typography variant="body2" color="secondary">
+            Try adjusting your search keywords
+          </Typography>
+        </Stack>
+      </Stack>
+    </div>
+  );
+
   return (
     <Stack direction="column" gap={24}>
       <Stack align="center" justify="space-between">
@@ -118,9 +133,7 @@ export const PeopleList = () => {
           <PeopleListLoadingView />
         </Grid>
       ) : (
-        <Stack justify="center">
-          <Typography variant="h2">No people found</Typography>
-        </Stack>
+        noDataView
       )}
 
       <Stack direction="column" align="center">

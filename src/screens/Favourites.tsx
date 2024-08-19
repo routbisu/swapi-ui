@@ -7,6 +7,7 @@ import { fetchFavourites, removeFavourite } from "../utils";
 import { Grid } from "../components/layout/Grid";
 import { PersonCard } from "../components/display/PersonCard";
 import { Typography } from "../components/display/Typography";
+import { DarthVaderGraphic } from "../components/media/DarthVaderGraphic";
 
 type FavouritesProps = { onClose: () => void };
 
@@ -27,6 +28,20 @@ export const Favourites: React.FC<FavouritesProps> = ({ onClose }) => {
       getFavourites();
     }
   };
+
+  const noDataView = (
+    <div style={{ padding: 50 }}>
+      <Stack direction="column" align="center" gap={20}>
+        <DarthVaderGraphic />
+        <Stack direction="column" align="center" gap={10}>
+          <Typography variant="h2">No favourites added</Typography>
+          <Typography variant="body2" color="secondary">
+            To add a character to your favourite list, go to their details page
+          </Typography>
+        </Stack>
+      </Stack>
+    </div>
+  );
 
   return (
     <Stack direction="column" gap={20}>
@@ -52,9 +67,7 @@ export const Favourites: React.FC<FavouritesProps> = ({ onClose }) => {
           ))}
         </Grid>
       ) : (
-        <Stack justify="center">
-          <Typography variant="h2">No favourites added</Typography>
-        </Stack>
+        noDataView
       )}
     </Stack>
   );
