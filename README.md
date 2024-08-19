@@ -4,7 +4,7 @@ This is a single page web application built with React and TypeScript that uses 
 
 ### How to run locally?
 
-1. Clone the repo to a local branch
+1. Clone the repo to a local branch.
 2. Ensure you are running the latest stable version of [Node.js](https://nodejs.org/en/download/package-manager/current) and [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable).
 3. Navigate to the project folder.
 4. Run `yarn install` to install the depencies required to run the project.
