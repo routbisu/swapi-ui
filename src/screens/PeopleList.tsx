@@ -12,7 +12,7 @@ import { Stack } from "../components/layout/Stack";
 import { SWAPI_PEOPLE_PAGE_SIZE, SWAPI_PEOPLE_URL } from "../constants";
 import { useHttpRequest } from "../hooks/useHttpRequest";
 import { PersonAPIObject, PersonAPIResponse } from "../types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Typography } from "../components/display/Typography";
 import { Textfield } from "../components/inputs/Textfield";
 import { PersonDetails } from "./PersonDetails";
@@ -45,10 +45,16 @@ const PersonWithPlanet: React.FC<{
 };
 
 export const PeopleList = () => {
+  const [searchKey, setSearchKey] = useState<string>();
   const [selectedPerson, setSelectedPerson] = useState<
     PersonAPIObject | undefined
   >();
   const [peopleUrl, setPeopleUrl] = useState<string>(SWAPI_PEOPLE_URL);
+
+  useEffect(() => {
+    setPeopleUrl(`${SWAPI_PEOPLE_URL}/?search=${searchKey}`);
+  }, [searchKey]);
+
   const { data: people, isLoading: isListLoading } = useHttpRequest<
     false,
     PersonAPIResponse
@@ -79,9 +85,8 @@ export const PeopleList = () => {
         <Textfield
           placeholder="Search"
           icon={MagnifyingGlass}
-          onChange={(searchKey) =>
-            setPeopleUrl(`${SWAPI_PEOPLE_URL}/?search=${searchKey}`)
-          }
+          onChange={setSearchKey}
+          defaultValue={searchKey}
         />
       </Stack>
 

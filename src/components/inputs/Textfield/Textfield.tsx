@@ -8,6 +8,8 @@ type TextfieldProps = {
   disabled?: boolean;
   placeholder?: string;
   onChange?: (value: string) => void;
+  value?: string;
+  defaultValue?: string;
   icon?: Icon;
 };
 
@@ -16,6 +18,8 @@ export const Textfield: React.FC<TextfieldProps> = ({
   placeholder,
   onChange,
   icon,
+  value,
+  defaultValue,
 }) => {
   const EndIcon = icon;
   const theme = useTheme();
@@ -62,6 +66,8 @@ export const Textfield: React.FC<TextfieldProps> = ({
         className={textfield}
         placeholder={placeholder}
         onChange={handleChange}
+        value={value}
+        defaultValue={defaultValue}
       />
 
       {EndIcon && (
