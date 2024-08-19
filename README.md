@@ -2,6 +2,15 @@
 
 This is a single page web application built with React and TypeScript that uses the [SWAPI - Star Wars API](https://swapi.dev/) to show a list of characters from the Star Wars universe.
 
+### List of libraries / tooling used
+
+- [Vite](https://vitejs.dev/guide/): Build tool
+- [Vitest](https://vitest.dev/): Test framework
+- [Emotion](https://emotion.sh/docs/introduction): CSS-in-js library
+- [Phosphor Icons](https://phosphoricons.com/): Icons set
+- [Lodash](https://lodash.com/): JavaScript utility library
+- [Storybook](https://storybook.js.org/): Isolated building of React components
+
 ### How to run locally?
 
 1. Clone the repo to a local branch.
@@ -9,6 +18,10 @@ This is a single page web application built with React and TypeScript that uses 
 3. Navigate to the project folder.
 4. Run `yarn install` to install the depencies required to run the project.
 5. Run `yarn dev` to run the web app in dev mode.
+
+### Running tests
+
+This project uses vitest test framework for unit tests. To run test run `yarn tests` 
 
 ### Storybook
 
