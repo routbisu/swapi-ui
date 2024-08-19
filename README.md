@@ -24,6 +24,16 @@ It opens a browser automatically on the port `6006` (Storybook default) but in c
 - On clicking on a character you can see more details about it.
 - Also, on the top right on the header on the character details screen there is a heart button to add a character to your favourites list.
 
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/81e43243-aecd-4181-899f-d35194f63790">
+
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/7713f768-370f-4015-8265-1d4720acf217">
+
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/d159137c-a845-49b7-af3e-7d199c92975d">
+
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/99b1f3f8-e491-4fda-ad08-c62369b12760">
+
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/8bc037e1-8145-4fb6-b58c-b2b8d496d602">
+
 ### Notes
 
 When you add a character to favourites, it is saved in your browser's localstorage. Please note that if you move to another browser or clear your browser data, your favourite characters will be lost.
