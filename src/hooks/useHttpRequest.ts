@@ -5,19 +5,42 @@ import { useEffect, useState } from "react";
  * @param url
  * @returns data, loading and error states
  */
-export const useHttpRequest = <Data = any>(url?: string) => {
+export const useHttpRequest = <
+  Multiple extends boolean = false,
+  Data = any,
+  Response = Multiple extends true ? Data[] : Data,
+>(
+  url?: string | string[]
+): {
+  data?: Response;
+  isLoading?: boolean;
+  error?: string;
+  fetchData: (url?: string | string[]) => Promise<void>;
+} => {
   const [isLoading, setIsLoading] = useState<boolean>();
   const [error, setError] = useState<string>();
-  const [data, setData] = useState<Data>();
+  const [data, setData] = useState<Response>();
 
-  const fetchData = async (url?: string) => {
+  const fetchData = async (url?: string | string[]) => {
     try {
       if (url) {
         setIsLoading(true);
-        const apiResponse = await fetch(url);
-        const result = await apiResponse.json();
 
-        setData(result as Data);
+        /** For multiple requests */
+        if (Array.isArray(url)) {
+          const apiResponses = await Promise.all(url?.map((u) => fetch(u)));
+          const results = await Promise.all(
+            apiResponses?.map((response) => response.json())
+          );
+
+          setData(results as Response);
+        } else {
+          /** For single requests */
+          const apiResponse = await fetch(url);
+          const result = await apiResponse.json();
+
+          setData(result);
+        }
       }
     } catch (error) {
       setError(error as string);

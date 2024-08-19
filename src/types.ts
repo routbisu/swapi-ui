@@ -3,6 +3,10 @@ export type PersonAPIObject = {
   name?: string;
   gender?: string;
   homeworld?: string;
+  hair_color?: string;
+  eye_color?: string;
+  films?: string[];
+  starships?: string[];
 };
 
 export type PersonAPIResponse = {

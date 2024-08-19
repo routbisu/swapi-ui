@@ -18,6 +18,10 @@ export const defaultTheme: Theme = {
       fontSize: 14,
       fontWeight: 500,
     },
+    label: {
+      fontSize: 13,
+      fontWeight: 700,
+    },
   },
   color: {
     background: {

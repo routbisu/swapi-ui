@@ -135,6 +135,13 @@ table {
   border-spacing: 0;
 }
 
+button,
+input {
+  outline: none;
+  font-family: "Inter", sans-serif;
+  box-sizing: border-box;
+}
+
 :root {
   font-family: "Inter", sans-serif;
 

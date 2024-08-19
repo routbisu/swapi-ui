@@ -17,6 +17,7 @@ export type PersonCardProps = Pick<PersonAPIObject, "name" | "gender"> & {
   disableHover?: boolean;
   isLoading?: boolean;
   isPlanetLoading?: boolean;
+  onClick?: () => void;
 };
 
 export const PersonCard: React.FC<PersonCardProps> = ({
@@ -26,6 +27,7 @@ export const PersonCard: React.FC<PersonCardProps> = ({
   disableHover,
   isLoading,
   isPlanetLoading,
+  onClick,
 }) => {
   const theme = useTheme();
 
@@ -51,7 +53,7 @@ export const PersonCard: React.FC<PersonCardProps> = ({
   const genderIconColor = `${theme.color.text.primary}66`;
 
   return (
-    <div className={container}>
+    <div className={container} onClick={() => onClick && onClick()}>
       <Stack direction="row" align="center" justify="space-between">
         <Stack direction="column" gap={12}>
           {isLoading ? (
@@ -66,7 +68,7 @@ export const PersonCard: React.FC<PersonCardProps> = ({
               {isLoading || isPlanetLoading ? (
                 <Shimmer width={100} height={12} color="secondary" />
               ) : (
-                <Typography variant="body2" color="secondary">
+                <Typography variant="body2" color="secondary" capitalise>
                   {planet}
                 </Typography>
               )}
