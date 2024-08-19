@@ -10,6 +10,7 @@ type PersonDetailsCardProps = Pick<
   PersonCardProps,
   "name" | "gender" | "planet"
 > & {
+  height?: string;
   hairColour?: string;
   eyeColour?: string;
   films?: string[];
@@ -21,6 +22,7 @@ export const PersonDetailsCard: React.FC<PersonDetailsCardProps> = ({
   name,
   gender,
   planet,
+  height,
   hairColour,
   eyeColour,
   films,
@@ -34,7 +36,27 @@ export const PersonDetailsCard: React.FC<PersonDetailsCardProps> = ({
     border: 1px solid ${theme.color.border.card};
     padding: 20px 16px;
     border-radius: 4px;
+
+    & ul {
+      li {
+        line-height: 1.6;
+        p {
+          &:before {
+            content: "•";
+            padding-right: 8px;
+          }
+        }
+      }
+    }
   `;
+
+  const listLoader = (
+    <Stack direction="column" gap={16}>
+      <Shimmer width={200} height={12} color="secondary" />
+      <Shimmer width={160} height={12} color="secondary" />
+      <Shimmer width={180} height={12} color="secondary" />
+    </Stack>
+  );
 
   return (
     <div className={container}>
@@ -50,17 +72,29 @@ export const PersonDetailsCard: React.FC<PersonDetailsCardProps> = ({
             {santiseAPIText(gender)}
           </Typography>
 
+          {isLoading ? (
+            <div>
+              <Typography variant="body2" label="Planet" />
+              <Shimmer width={100} height={12} color="secondary" />
+            </div>
+          ) : (
+            <Typography
+              variant="body1"
+              color="secondary"
+              label="Planet"
+              capitalise
+            >
+              {planet}
+            </Typography>
+          )}
+
           <Typography
-            variant="body1"
+            variant="body2"
             color="secondary"
-            label="Planet"
+            label="Height"
             capitalise
           >
-            {isLoading ? (
-              <Shimmer width={100} height={12} color="secondary" />
-            ) : (
-              planet
-            )}
+            {height} {height ? "cm" : ""}
           </Typography>
 
           <Typography
@@ -81,33 +115,51 @@ export const PersonDetailsCard: React.FC<PersonDetailsCardProps> = ({
             {santiseAPIText(eyeColour)}
           </Typography>
 
-          <Typography
-            variant="body2"
-            color="secondary"
-            label="Films"
-            capitalise
-          >
-            {isLoading ? (
-              <Shimmer width={200} height={12} color="secondary" />
-            ) : (
-              films?.join(", ")
-            )}
-          </Typography>
+          {isLoading ? (
+            <Stack direction="column" gap={8}>
+              <Typography variant="body2" label="Films" />
+              {listLoader}
+            </Stack>
+          ) : (
+            <Stack direction="column">
+              <Typography variant="body2" label="Films" />
+              <ul>
+                {films?.map((film, idx) => (
+                  <li key={idx}>
+                    <Typography variant="body2" color="secondary" capitalise>
+                      {film}
+                    </Typography>
+                  </li>
+                ))}
+              </ul>
+            </Stack>
+          )}
 
-          <Typography
-            variant="body2"
-            color="secondary"
-            label="Starships piloted"
-            capitalise
-          >
-            {isLoading ? (
-              <Shimmer width={200} height={12} color="secondary" />
-            ) : starships?.length ? (
-              starships?.join(", ")
-            ) : (
-              "None"
-            )}
-          </Typography>
+          {isLoading ? (
+            <Stack direction="column" gap={8}>
+              <Typography variant="body2" label="Starships piloted" />
+              {listLoader}
+            </Stack>
+          ) : (
+            <Stack direction="column">
+              <Typography
+                variant="body2"
+                color="secondary"
+                label="Starships piloted"
+              >
+                {starships?.length ? null : "None"}
+              </Typography>
+              <ul>
+                {starships?.map((starship, idx) => (
+                  <li key={idx}>
+                    <Typography variant="body2" color="secondary" capitalise>
+                      {starship}
+                    </Typography>
+                  </li>
+                ))}
+              </ul>
+            </Stack>
+          )}
         </Stack>
       </Stack>
     </div>

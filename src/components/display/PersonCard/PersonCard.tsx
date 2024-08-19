@@ -4,30 +4,39 @@ import React from "react";
 import { Typography } from "../Typography";
 import { Stack } from "../../layout/Stack";
 import {
+  ArrowLineUp,
   GenderFemale,
   GenderMale,
   Icon as PhosphorIcon,
   Planet,
+  Trash,
 } from "@phosphor-icons/react";
 import { PersonAPIObject } from "../../../types";
 import { Shimmer } from "../Shimmer";
+import { Button } from "../../inputs/Button";
 
-export type PersonCardProps = Pick<PersonAPIObject, "name" | "gender"> & {
+export type PersonCardProps = Pick<
+  PersonAPIObject,
+  "name" | "gender" | "height"
+> & {
   planet?: string;
   disableHover?: boolean;
   isLoading?: boolean;
   isPlanetLoading?: boolean;
   onClick?: () => void;
+  onDelete?: () => void;
 };
 
 export const PersonCard: React.FC<PersonCardProps> = ({
   name,
   gender,
+  height,
   planet,
   disableHover,
   isLoading,
   isPlanetLoading,
   onClick,
+  onDelete,
 }) => {
   const theme = useTheme();
 
@@ -55,23 +64,35 @@ export const PersonCard: React.FC<PersonCardProps> = ({
   return (
     <div className={container} onClick={() => onClick && onClick()}>
       <Stack direction="row" align="center" justify="space-between">
-        <Stack direction="column" gap={12}>
-          {isLoading ? (
-            <Shimmer width={200} />
-          ) : (
-            <Typography variant="h2">{name}</Typography>
-          )}
+        <Stack direction="row" gap={16}>
+          {onDelete ? <Button startIcon={Trash} onClick={onDelete} /> : null}
+          <Stack direction="column" gap={12}>
+            {isLoading ? (
+              <Shimmer width={200} />
+            ) : (
+              <Typography variant="h2">{name}</Typography>
+            )}
 
-          <Stack direction="column" gap={8}>
-            <Stack gap={8} align="center">
-              <Planet size={16} weight="fill" />
-              {isLoading || isPlanetLoading ? (
-                <Shimmer width={100} height={12} color="secondary" />
-              ) : (
-                <Typography variant="body2" color="secondary" capitalise>
-                  {planet}
-                </Typography>
-              )}
+            <Stack gap={8}>
+              <Stack gap={8} align="center">
+                <Planet size={16} weight="fill" />
+                {isLoading || isPlanetLoading ? (
+                  <Shimmer width={100} height={12} color="secondary" />
+                ) : (
+                  <Typography variant="body2" color="secondary" capitalise>
+                    {planet}
+                  </Typography>
+                )}
+              </Stack>
+
+              {height ? (
+                <Stack gap={8} align="center">
+                  <ArrowLineUp size={16} weight="fill" />
+                  <Typography variant="body2" color="secondary">
+                    {height} {height && "cm"}
+                  </Typography>
+                </Stack>
+              ) : null}
             </Stack>
           </Stack>
         </Stack>

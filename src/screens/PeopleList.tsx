@@ -1,5 +1,6 @@
 import {
   FastForward,
+  Heart,
   MagnifyingGlass,
   Rewind,
   SkipBack,
@@ -16,6 +17,7 @@ import { useEffect, useState } from "react";
 import { Typography } from "../components/display/Typography";
 import { Textfield } from "../components/inputs/Textfield";
 import { PersonDetails } from "./PersonDetails";
+import { Favourites } from "./Favourites";
 
 const PeopleListLoadingView: React.FC<{ cardsCount?: number }> = ({
   cardsCount = 10,
@@ -45,6 +47,7 @@ const PersonWithPlanet: React.FC<{
 };
 
 export const PeopleList = () => {
+  const [showFavourites, setShowFavorites] = useState<boolean>();
   const [searchKey, setSearchKey] = useState<string>();
   const [selectedPerson, setSelectedPerson] = useState<
     PersonAPIObject | undefined
@@ -52,7 +55,9 @@ export const PeopleList = () => {
   const [peopleUrl, setPeopleUrl] = useState<string>(SWAPI_PEOPLE_URL);
 
   useEffect(() => {
-    setPeopleUrl(`${SWAPI_PEOPLE_URL}/?search=${searchKey}`);
+    setPeopleUrl(
+      searchKey ? `${SWAPI_PEOPLE_URL}/?search=${searchKey}` : SWAPI_PEOPLE_URL
+    );
   }, [searchKey]);
 
   const { data: people, isLoading: isListLoading } = useHttpRequest<
@@ -68,6 +73,7 @@ export const PeopleList = () => {
     setSelectedPerson(person);
   };
 
+  /** Show a selected person's details */
   if (selectedPerson) {
     return (
       <PersonDetails
@@ -77,10 +83,17 @@ export const PeopleList = () => {
     );
   }
 
+  /** Show favourite characters only */
+  if (showFavourites) {
+    return <Favourites onClose={() => setShowFavorites(false)} />;
+  }
+
   return (
     <Stack direction="column" gap={24}>
       <Stack align="center" justify="space-between">
-        <Button />
+        <Button startIcon={Heart} onClick={() => setShowFavorites(true)}>
+          Favourites
+        </Button>
 
         <Textfield
           placeholder="Search"

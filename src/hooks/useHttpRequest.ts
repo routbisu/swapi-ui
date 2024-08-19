@@ -17,7 +17,7 @@ export const useHttpRequest = <
   error?: string;
   fetchData: (url?: string | string[]) => Promise<void>;
 } => {
-  const [isLoading, setIsLoading] = useState<boolean>();
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>();
   const [data, setData] = useState<Response>();
 

@@ -31,6 +31,15 @@ export const FemaleCharacter: StoryObj<typeof meta> = {
   },
 };
 
+export const FavouriteCharacter: StoryObj<typeof meta> = {
+  args: {
+    name: "Leia Organa",
+    gender: "Female",
+    planet: "Alderaan",
+    height: "120",
+  },
+};
+
 export const LoadingState: StoryObj<typeof meta> = {
   args: {
     isLoading: true,
@@ -42,5 +51,6 @@ export const PlanetLoadingState: StoryObj<typeof meta> = {
     name: "Leia Organa",
     gender: "Female",
     isPlanetLoading: true,
+    height: "120",
   },
 };

@@ -23,8 +23,12 @@ export const Typography: React.FC<TypographyProps> = ({
 
   const commonStyles: CSSObject = {
     color: theme.color.text?.[color || "primary"],
-    textTransform: capitalise ? "capitalize" : "none",
   };
+
+  const capitalisedChildren =
+    typeof children === "string" && capitalise
+      ? children?.charAt(0)?.toUpperCase() + children?.slice(1)
+      : children;
 
   if (variant === "h1") {
     return (
@@ -34,7 +38,7 @@ export const Typography: React.FC<TypographyProps> = ({
           ${commonStyles}
         `}
       >
-        {children}
+        {capitalisedChildren}
       </h1>
     );
   }
@@ -47,7 +51,7 @@ export const Typography: React.FC<TypographyProps> = ({
           ${commonStyles}
         `}
       >
-        {children}
+        {capitalisedChildren}
       </h2>
     );
   }
@@ -72,7 +76,7 @@ export const Typography: React.FC<TypographyProps> = ({
           ${commonStyles}
         `}
       >
-        {children}
+        {capitalisedChildren}
       </p>
     </Stack>
   );

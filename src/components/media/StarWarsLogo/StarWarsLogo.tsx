@@ -21,7 +21,6 @@ export const StarWarsLogo: React.FC<{ height?: number }> = ({
         width="693.615px"
         height="419.375px"
         viewBox="0 0 693.615 419.375"
-        enable-background="new 0 0 693.615 419.375"
       >
         <g>
           <path
