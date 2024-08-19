@@ -68,7 +68,7 @@ export const PersonCard: React.FC<PersonCardProps> = ({
           {onDelete ? <Button startIcon={Trash} onClick={onDelete} /> : null}
           <Stack direction="column" gap={12}>
             {isLoading ? (
-              <Shimmer width={200} />
+              <Shimmer width={200} dataTestId="name-loader" />
             ) : (
               <Typography variant="h2">{name}</Typography>
             )}
@@ -98,7 +98,12 @@ export const PersonCard: React.FC<PersonCardProps> = ({
         </Stack>
 
         {GenderIcon ? (
-          <GenderIcon size={32} weight="duotone" color={genderIconColor} />
+          <GenderIcon
+            size={32}
+            weight="duotone"
+            color={genderIconColor}
+            data-testid="gender-icon"
+          />
         ) : isLoading ? (
           <Shimmer height={25} width={25} />
         ) : null}

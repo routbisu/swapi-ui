@@ -1,3 +1,4 @@
+import React from "react";
 import { css } from "@emotion/css";
 import { useTheme } from "@emotion/react";
 
@@ -5,12 +6,14 @@ type ShimmerProps = {
   height?: number;
   width?: number | string;
   color?: "primary" | "secondary";
+  dataTestId?: string;
 };
 
 export const Shimmer: React.FC<ShimmerProps> = ({
   height = 16,
   width,
   color = "primary",
+  dataTestId,
 }) => {
   const theme = useTheme();
 
@@ -34,5 +37,5 @@ export const Shimmer: React.FC<ShimmerProps> = ({
     }
   `;
 
-  return <div className={shimmerWrapper} />;
+  return <div className={shimmerWrapper} data-testid={dataTestId} />;
 };
