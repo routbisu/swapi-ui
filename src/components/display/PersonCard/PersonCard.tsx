@@ -10,10 +10,13 @@ import {
   Planet,
 } from "@phosphor-icons/react";
 import { PersonAPIObject } from "../../../types";
+import { Shimmer } from "../Shimmer";
 
 export type PersonCardProps = Pick<PersonAPIObject, "name" | "gender"> & {
   planet?: string;
   disableHover?: boolean;
+  isLoading?: boolean;
+  isPlanetLoading?: boolean;
 };
 
 export const PersonCard: React.FC<PersonCardProps> = ({
@@ -21,6 +24,8 @@ export const PersonCard: React.FC<PersonCardProps> = ({
   gender,
   planet,
   disableHover,
+  isLoading,
+  isPlanetLoading,
 }) => {
   const theme = useTheme();
 
@@ -48,19 +53,31 @@ export const PersonCard: React.FC<PersonCardProps> = ({
   return (
     <div className={container}>
       <Stack direction="row" align="center" justify="space-between">
-        <Stack direction="column" gap={10}>
-          <Typography variant="h2">{name}</Typography>
+        <Stack direction="column" gap={12}>
+          {isLoading ? (
+            <Shimmer width={200} />
+          ) : (
+            <Typography variant="h2">{name}</Typography>
+          )}
+
           <Stack direction="column" gap={8}>
-            <Typography variant="body2" color="secondary">
-              <Stack gap={8} align="center">
-                <Planet size={16} weight="fill" /> {planet}
-              </Stack>
-            </Typography>
+            <Stack gap={8} align="center">
+              <Planet size={16} weight="fill" />
+              {isLoading || isPlanetLoading ? (
+                <Shimmer width={100} height={12} color="secondary" />
+              ) : (
+                <Typography variant="body2" color="secondary">
+                  {planet}
+                </Typography>
+              )}
+            </Stack>
           </Stack>
         </Stack>
 
         {GenderIcon ? (
           <GenderIcon size={32} weight="duotone" color={genderIconColor} />
+        ) : isLoading ? (
+          <Shimmer height={25} width={25} />
         ) : null}
       </Stack>
     </div>

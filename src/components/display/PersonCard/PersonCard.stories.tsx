@@ -30,3 +30,17 @@ export const FemaleCharacter: StoryObj<typeof meta> = {
     planet: "Alderaan",
   },
 };
+
+export const LoadingState: StoryObj<typeof meta> = {
+  args: {
+    isLoading: true,
+  },
+};
+
+export const PlanetLoadingState: StoryObj<typeof meta> = {
+  args: {
+    name: "Leia Organa",
+    gender: "Female",
+    isPlanetLoading: true,
+  },
+};

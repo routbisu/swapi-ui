@@ -7,31 +7,50 @@ import { SWAPI_PEOPLE_URL } from "../constants";
 import { useHttpRequest } from "../hooks/useHttpRequest";
 import { PersonAPIObject, PersonAPIResponse } from "../types";
 import { useState } from "react";
+import { Typography } from "../components/display/Typography";
+
+const PeopleListLoadingView: React.FC<{ cardsCount?: number }> = ({
+  cardsCount = 10,
+}) => {
+  return new Array(cardsCount)
+    .fill(null)
+    .map((_, idx) => <PersonCard key={idx} isLoading />);
+};
 
 const PersonWithPlanet: React.FC<{ person: PersonAPIObject }> = ({
   person,
 }) => {
-  const { data: planetDetails } = useHttpRequest(person?.homeworld);
+  const { data: planetDetails, isLoading: isPlanetLoading } = useHttpRequest(
+    person?.homeworld
+  );
 
   return (
     <PersonCard
       name={person?.name}
       gender={person?.gender}
       planet={planetDetails?.name}
+      isPlanetLoading={isPlanetLoading}
     />
   );
 };
 
 export const PeopleList = () => {
   const [peopleUrl, setPeopleUrl] = useState<string>(SWAPI_PEOPLE_URL);
-  const { data: people } = useHttpRequest<PersonAPIResponse>(peopleUrl);
+  const { data: people, isLoading: isListLoading } =
+    useHttpRequest<PersonAPIResponse>(peopleUrl);
 
   return (
     <Stack direction="column" gap={24}>
       <Grid columnsMobile={1} columnsDesktop={2} gap={20}>
-        {Array.isArray(people?.results)
-          ? people.results.map((person) => <PersonWithPlanet person={person} />)
-          : "No data"}
+        {Array.isArray(people?.results) ? (
+          people.results.map((person, idx) => (
+            <PersonWithPlanet person={person} key={idx} />
+          ))
+        ) : isListLoading ? (
+          <PeopleListLoadingView />
+        ) : (
+          <Typography variant="h2">No people found</Typography>
+        )}
       </Grid>
 
       <Stack direction="column" align="center">

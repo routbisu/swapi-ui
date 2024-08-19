@@ -1,7 +1,7 @@
 /** Represents the type of the person api response object for a person */
 export type PersonAPIObject = {
-  name: string;
-  gender: string;
+  name?: string;
+  gender?: string;
   homeworld?: string;
 };
 

@@ -4,7 +4,6 @@ import { CSSObject } from "@emotion/react";
 interface Text extends CSSObject {
   fontSize: number;
   fontWeight: number;
-  lineHeight?: number;
 }
 
 declare module "@emotion/react" {
