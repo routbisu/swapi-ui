@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { PersonCard } from "./PersonCard";
 
 const meta = {
-  title: "Person Card",
+  title: "Display / Person Card",
   component: (props) => (
     <div style={{ width: 400 }}>
       <PersonCard {...props} />

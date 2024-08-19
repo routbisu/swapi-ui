@@ -26,13 +26,17 @@ export const defaultTheme: Theme = {
   color: {
     background: {
       default: "#242424",
+      button: "#434343",
+      buttonDisabled: "#333333",
+      buttonActive: "#3a3a3a",
     },
     border: {
       card: "#525252",
+      buttonActive: "#7A7A7A",
     },
     text: {
       primary: "#FFE820",
-      secondary: "#ACACAC",
+      secondary: "#CCCCCC",
     },
   },
 };

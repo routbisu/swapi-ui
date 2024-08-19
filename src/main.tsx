@@ -3,9 +3,9 @@ import { ThemeProvider } from "@emotion/react";
 import { defaultTheme } from "./themes/default";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Layout } from "./pages/Layout.tsx";
-import "./global.css";
 import { PeopleList } from "./pages/PeopleList.tsx";
 import { PersonDetails } from "./pages/PersonDetails.tsx";
+import "./global.css";
 
 const router = createBrowserRouter([
   {

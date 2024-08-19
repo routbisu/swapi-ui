@@ -18,9 +18,13 @@ declare module "@emotion/react" {
     color: {
       background: {
         default: string;
+        button: string;
+        buttonDisabled: string;
+        buttonActive: string;
       };
       border: {
         card: string;
+        buttonActive: string;
       };
       text: {
         primary: string;
