@@ -24,15 +24,13 @@ It opens a browser automatically on the port `6006` (Storybook default) but in c
 - On clicking on a character you can see more details about it.
 - Also, on the top right on the header on the character details screen there is a heart button to add a character to your favourites list.
 
-<img width="800" alt="image" src="https://github.com/user-attachments/assets/81e43243-aecd-4181-899f-d35194f63790">
+### Screen recording: desktop
 
-<img width="800" alt="image" src="https://github.com/user-attachments/assets/7713f768-370f-4015-8265-1d4720acf217">
+https://github.com/user-attachments/assets/8bc93219-b1bf-47f6-9f71-d3260fd131d2
 
-<img width="800" alt="image" src="https://github.com/user-attachments/assets/d159137c-a845-49b7-af3e-7d199c92975d">
+### Screen recording: mobile
 
-<img width="800" alt="image" src="https://github.com/user-attachments/assets/99b1f3f8-e491-4fda-ad08-c62369b12760">
-
-<img width="800" alt="image" src="https://github.com/user-attachments/assets/8bc037e1-8145-4fb6-b58c-b2b8d496d602">
+https://github.com/user-attachments/assets/465d96e3-340c-48ad-9476-1cfe7e9ee8a6
 
 ### Notes
 
