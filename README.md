@@ -45,6 +45,10 @@ https://github.com/user-attachments/assets/8bc93219-b1bf-47f6-9f71-d3260fd131d2
 
 https://github.com/user-attachments/assets/465d96e3-340c-48ad-9476-1cfe7e9ee8a6
 
+### Network error
+
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/d00de609-cabc-4dfb-bfb6-e0c8703f4fe1">
+
 ### Notes
 
 When you add a character to favourites, it is saved in your browser's localstorage. Please note that if you move to another browser or clear your browser data, your favourite characters will be lost.
