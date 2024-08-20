@@ -1,17 +1,81 @@
-import { CaretLeft } from "@phosphor-icons/react";
+import { CaretLeft, FloppyDisk } from "@phosphor-icons/react";
 import { Button } from "../components/inputs/Button";
 import { Stack } from "../components/layout/Stack";
 import { useEffect, useState } from "react";
 import { FavouritePerson } from "../types";
-import { fetchFavourites, removeFavourite } from "../utils";
+import { editFavourite, fetchFavourites, removeFavourite } from "../utils";
 import { Grid } from "../components/layout/Grid";
 import { PersonCard } from "../components/display/PersonCard";
 import { Typography } from "../components/display/Typography";
 import { DarthVaderGraphic } from "../components/media/DarthVaderGraphic";
+import { Modal } from "../components/display/Modal";
+import { Textfield } from "../components/inputs/Textfield";
+import { css } from "@emotion/css";
+
+type FavouriteEditorProps = {
+  person?: FavouritePerson;
+  onClose: () => void;
+  onSubmit: () => void;
+};
+
+const FavouriteEditor: React.FC<FavouriteEditorProps> = ({
+  person,
+  onClose,
+  onSubmit,
+}) => {
+  const [gender, setGender] = useState<string | undefined>(person?.gender);
+  const [height, setHeight] = useState<string | undefined>(person?.height);
+
+  const handleSubmit = () => {
+    const newPerson = { ...person, gender, height };
+    editFavourite(newPerson);
+
+    onSubmit();
+  };
+
+  return (
+    <Modal
+      heading={`Edit ${person?.name}`}
+      onClose={onClose}
+      submitButtonProps={{
+        children: "Save",
+        startIcon: FloppyDisk,
+        onClick: handleSubmit,
+      }}
+    >
+      <div
+        className={css`
+          padding: 8px;
+        `}
+      >
+        <Stack direction="column" gap={12}>
+          <Typography variant="body2" label="Name" color="secondary">
+            {person?.name}
+          </Typography>
+          <Textfield
+            fullWidth
+            label="Gender"
+            defaultValue={gender}
+            onChange={setGender}
+          />
+          <Textfield
+            fullWidth
+            label="Height"
+            defaultValue={height}
+            onChange={setHeight}
+          />
+        </Stack>
+      </div>
+    </Modal>
+  );
+};
 
 type FavouritesProps = { onClose: () => void };
 
 export const Favourites: React.FC<FavouritesProps> = ({ onClose }) => {
+  const [editCharacter, setEditCharacter] = useState<
+    FavouritePerson | undefined
+  >();
   const [favourites, setFavourites] = useState<FavouritePerson[]>();
 
   const getFavourites = () => {
@@ -63,12 +127,25 @@ export const Favourites: React.FC<FavouritesProps> = ({ onClose }) => {
               planet={person?.planet}
               disableHover
               onDelete={() => handleRemoveFavourite(person?.url)}
+              onEdit={() => setEditCharacter(person)}
             />
           ))}
         </Grid>
       ) : (
         noDataView
       )}
+
+      {editCharacter ? (
+        <FavouriteEditor
+          person={editCharacter}
+          onClose={() => setEditCharacter(undefined)}
+          /** Refresh favourites list after editing */
+          onSubmit={() => {
+            setEditCharacter(undefined);
+            getFavourites();
+          }}
+        />
+      ) : null}
     </Stack>
   );
 };

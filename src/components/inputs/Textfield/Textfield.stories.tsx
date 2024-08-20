@@ -5,9 +5,6 @@ import { MagnifyingGlass } from "@phosphor-icons/react";
 const meta = {
   title: "Inputs / Textfield",
   component: Textfield,
-  parameters: {
-    layout: "centered",
-  },
 } satisfies Meta<typeof Textfield>;
 
 export default meta;
@@ -22,5 +19,13 @@ export const SearchField: StoryObj<typeof meta> = {
   args: {
     placeholder: "Search",
     icon: MagnifyingGlass,
+  },
+};
+
+export const FullWidthWithLabel: StoryObj<typeof meta> = {
+  args: {
+    placeholder: "Height",
+    fullWidth: true,
+    label: "Height",
   },
 };

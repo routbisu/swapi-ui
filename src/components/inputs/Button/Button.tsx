@@ -4,7 +4,7 @@ import { Icon, IconProps } from "@phosphor-icons/react";
 import React, { ReactNode } from "react";
 import { Stack } from "../../layout/Stack";
 
-type ButtonProps = {
+export type ButtonProps = {
   children?: ReactNode;
   startIcon?: Icon;
   startIconProps?: IconProps;

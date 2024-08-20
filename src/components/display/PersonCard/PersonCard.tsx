@@ -7,6 +7,7 @@ import {
   ArrowLineUp,
   GenderFemale,
   GenderMale,
+  PencilSimple,
   Icon as PhosphorIcon,
   Planet,
   Trash,
@@ -25,6 +26,7 @@ export type PersonCardProps = Pick<
   isPlanetLoading?: boolean;
   onClick?: () => void;
   onDelete?: () => void;
+  onEdit?: () => void;
 };
 
 export const PersonCard: React.FC<PersonCardProps> = ({
@@ -37,6 +39,7 @@ export const PersonCard: React.FC<PersonCardProps> = ({
   isPlanetLoading,
   onClick,
   onDelete,
+  onEdit,
 }) => {
   const theme = useTheme();
 
@@ -65,7 +68,12 @@ export const PersonCard: React.FC<PersonCardProps> = ({
     <div className={container} onClick={() => onClick && onClick()}>
       <Stack direction="row" align="center" justify="space-between">
         <Stack direction="row" gap={16}>
-          {onDelete ? <Button startIcon={Trash} onClick={onDelete} /> : null}
+          <Stack direction="row" gap={12}>
+            {onDelete ? <Button startIcon={Trash} onClick={onDelete} /> : null}
+            {onEdit ? (
+              <Button startIcon={PencilSimple} onClick={onEdit} />
+            ) : null}
+          </Stack>
           <Stack direction="column" gap={12}>
             {isLoading ? (
               <Shimmer width={200} dataTestId="name-loader" />

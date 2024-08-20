@@ -67,6 +67,35 @@ export const removeFavourite = (personUrl: string) => {
 };
 
 /**
+ * Edit gender and height for a favourite character saved in localstorage
+ * @param character person with edited details
+ */
+export const editFavourite = (editedPerson: FavouritePerson) => {
+  if (localStorage) {
+    // Get existing items from storage
+    const favourites = localStorage.getItem(FAVOURITES_LOCAL_STORAGE_KEY);
+    if (favourites) {
+      const parsedFavourites = JSON.parse(favourites);
+
+      if (Array.isArray(parsedFavourites)) {
+        const personIdx = parsedFavourites.findIndex(
+          (person) => person.url === editedPerson.url
+        );
+
+        /** Replace person with the new person details */
+        const newFavouritesList = [...parsedFavourites];
+        newFavouritesList[personIdx] = editedPerson;
+
+        localStorage.setItem(
+          FAVOURITES_LOCAL_STORAGE_KEY,
+          JSON.stringify(newFavouritesList)
+        );
+      }
+    }
+  }
+};
+
+/**
  * Fetch all favourite characters from localstorage
  */
 export const fetchFavourites = (): FavouritePerson[] => {

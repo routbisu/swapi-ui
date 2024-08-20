@@ -23,4 +23,4 @@ export type PersonAPIResponse = {
 export type FavouritePerson = Pick<
   PersonCardProps,
   "name" | "gender" | "height" | "planet"
-> & { url: PersonAPIObject["url"] };
+> & { url?: PersonAPIObject["url"] };
