@@ -45,6 +45,10 @@ https://github.com/user-attachments/assets/8bc93219-b1bf-47f6-9f71-d3260fd131d2
 
 https://github.com/user-attachments/assets/465d96e3-340c-48ad-9476-1cfe7e9ee8a6
 
+### Bonus task
+
+https://github.com/user-attachments/assets/0664f343-b231-4b41-a313-3765223c00a4
+
 ### Network error
 
 <img width="800" alt="image" src="https://github.com/user-attachments/assets/d00de609-cabc-4dfb-bfb6-e0c8703f4fe1">
