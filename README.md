@@ -13,10 +13,10 @@ This is a single page web application built with React and TypeScript that uses 
 
 ### How to run locally?
 
-1. Clone the repo to a local branch.
+1. Clone the repo to your a local folder.
 2. Ensure you are running the latest stable version of [Node.js](https://nodejs.org/en/download/package-manager/current) and [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable).
-3. Navigate to the project folder.
-4. Run `yarn install` to install the depencies required to run the project.
+3. Navigate inside the project folder.
+4. Run `yarn` to install the depencies required to run the project.
 5. Run `yarn dev` to run the web app in dev mode.
 
 ### Running tests
@@ -29,13 +29,16 @@ This project also has storybook installed as a dependency to showcase a small co
 
 To open the storybook run `yarn storybook`
 
-It opens a browser automatically on the port `6006` (Storybook default) but in case this port is unavailble Storybook will try to run on the next available port.
+It opens a browser automatically on the port `6006` (default) but in case this port is unavailble Storybook will try to run on the next available port. If you wish to run on a different port you can also change the `stroybook` target inside the `package.json` folder.
 
 ### Features
 
-- When you first run the app you will see the characters list screen.
+- When you first run the app you will see the characters list screen. There is pagination available on it to navigate to next & previous pages. It also has shortcuts to navigate to the first and last pages.
 - On clicking on a character you can see more details about it.
 - Also, on the top right on the header on the character details screen there is a heart button to add a character to your favourites list.
+- To navigate to the favourites list click on the favorites button on the top left of screen.
+- You can remove a favourite character from the list by clicking on the trash button on the card.
+- Bonus task: It's also possible to edit the gender and height of a character by clicking on the pencil icon and then submit new details on a modal.
 
 ### Screen recording: desktop
 
