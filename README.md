@@ -38,7 +38,7 @@ It opens a browser automatically on the port `6006` (default) but in case this p
 - Also, on the top right on the header on the character details screen there is a heart button to add a character to your favourites list.
 - To navigate to the favourites list click on the favorites button on the top left of screen.
 - You can remove a favourite character from the list by clicking on the trash button on the card.
-- **Bonus task:** It's also possible to edit the gender and height of a character by clicking on the pencil icon and then submit new details on a modal.
+- **Bonus task:** It's also possible to edit the gender and height of a character by clicking on the pencil icon and then submitting new details on a modal.
 
 ### Screen recording: desktop
 
