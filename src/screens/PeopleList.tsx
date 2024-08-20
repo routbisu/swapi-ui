@@ -19,6 +19,7 @@ import { Textfield } from "../components/inputs/Textfield";
 import { PersonDetails } from "./PersonDetails";
 import { Favourites } from "./Favourites";
 import { DarthVaderGraphic } from "../components/media/DarthVaderGraphic";
+import { ErrorCard } from "../components/display/ErrorCard";
 
 const PeopleListLoadingView: React.FC<{ cardsCount?: number }> = ({
   cardsCount = 10,
@@ -61,10 +62,11 @@ export const PeopleList = () => {
     );
   }, [searchKey]);
 
-  const { data: people, isLoading: isListLoading } = useHttpRequest<
-    false,
-    PersonAPIResponse
-  >(peopleUrl);
+  const {
+    data: people,
+    isLoading: isListLoading,
+    error,
+  } = useHttpRequest<false, PersonAPIResponse>(peopleUrl);
 
   const pageCount = Math.ceil(
     Number(people?.count || 0) / SWAPI_PEOPLE_PAGE_SIZE
@@ -102,6 +104,10 @@ export const PeopleList = () => {
       </Stack>
     </div>
   );
+
+  if (error) {
+    return <ErrorCard />;
+  }
 
   return (
     <Stack direction="column" gap={24}>

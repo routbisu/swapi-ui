@@ -17,6 +17,7 @@ export const defaultTheme: Theme = {
     body2: {
       fontSize: 14,
       fontWeight: 500,
+      lineHeight: 1.5,
     },
     label: {
       fontSize: 13,

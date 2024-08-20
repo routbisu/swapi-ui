@@ -35,7 +35,7 @@ export const Favourites: React.FC<FavouritesProps> = ({ onClose }) => {
         <DarthVaderGraphic />
         <Stack direction="column" align="center" gap={10}>
           <Typography variant="h2">No favourites added</Typography>
-          <Typography variant="body2" color="secondary">
+          <Typography variant="body2" color="secondary" align="center">
             To add a character to your favourite list, go to their details page
           </Typography>
         </Stack>

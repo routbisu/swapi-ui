@@ -1,6 +1,6 @@
 import { css } from "@emotion/css";
 import { CSSObject, useTheme } from "@emotion/react";
-import React, { ReactNode } from "react";
+import React, { CSSProperties, ReactNode } from "react";
 import { Stack } from "../../layout/Stack";
 
 type TypographyProps = {
@@ -10,6 +10,7 @@ type TypographyProps = {
   capitalise?: boolean;
   children?: ReactNode;
   label?: string;
+  align?: CSSProperties["textAlign"];
 };
 
 export const Typography: React.FC<TypographyProps> = ({
@@ -18,11 +19,13 @@ export const Typography: React.FC<TypographyProps> = ({
   capitalise,
   children,
   label,
+  align,
 }) => {
   const theme = useTheme();
 
   const commonStyles: CSSObject = {
     color: theme.color.text?.[color || "primary"],
+    textAlign: align,
   };
 
   const capitalisedChildren =
