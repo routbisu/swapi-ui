@@ -41,6 +41,7 @@ export const Modal: React.FC<ModalProps> = ({
     background: ${theme.color.background.button};
     min-width: 380px;
     border: 1px solid ${theme.color.border.card};
+    border-radius: 4px;
   `;
 
   const header = css`

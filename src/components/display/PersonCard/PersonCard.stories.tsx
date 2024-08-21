@@ -40,6 +40,17 @@ export const FavouriteCharacter: StoryObj<typeof meta> = {
   },
 };
 
+export const FavouriteCharacterWithEdit: StoryObj<typeof meta> = {
+  args: {
+    name: "Leia Organa",
+    gender: "Female",
+    planet: "Alderaan",
+    height: "120",
+    onDelete: () => {},
+    onEdit: () => {},
+  },
+};
+
 export const LoadingState: StoryObj<typeof meta> = {
   args: {
     isLoading: true,
