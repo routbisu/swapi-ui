@@ -18,7 +18,10 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    /* To add typing support for jest-dom methods like `toBeInTheDocument` */
+    "types": ["@testing-library/jest-dom"],
   },
   "include": ["src"]
 }

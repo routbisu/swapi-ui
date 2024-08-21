@@ -3,7 +3,14 @@ import { Shimmer } from "./Shimmer";
 
 const meta = {
   title: "Display / Shimmer",
-  component: Shimmer,
+  component: (props) => (
+    <div style={{ width: 400 }}>
+      <Shimmer {...props} />
+    </div>
+  ),
+  parameters: {
+    layout: "centered",
+  },
 } satisfies Meta<typeof Shimmer>;
 
 export default meta;

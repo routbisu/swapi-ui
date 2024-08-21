@@ -43,7 +43,8 @@ export const useHttpRequest = <
         }
       }
     } catch (error) {
-      setError(error as string);
+      // TODO: Add logging
+      setError(JSON.stringify(error));
     } finally {
       setIsLoading(false);
     }

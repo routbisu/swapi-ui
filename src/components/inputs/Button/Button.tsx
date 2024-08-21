@@ -49,6 +49,7 @@ export const Button: React.FC<ButtonProps> = ({
     ${theme.typography.body1}
     font-weight: 600;
     color: ${theme.color.text.secondary};
+    opacity: ${disabled ? ".7" : "1"};
 
     &:hover,
     &:focus {

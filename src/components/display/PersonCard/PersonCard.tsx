@@ -68,12 +68,16 @@ export const PersonCard: React.FC<PersonCardProps> = ({
     <div className={container} onClick={() => onClick && onClick()}>
       <Stack direction="row" align="center" justify="space-between">
         <Stack direction="row" gap={16}>
-          <Stack direction="row" gap={12}>
-            {onDelete ? <Button startIcon={Trash} onClick={onDelete} /> : null}
-            {onEdit ? (
-              <Button startIcon={PencilSimple} onClick={onEdit} />
-            ) : null}
-          </Stack>
+          {onDelete || onEdit ? (
+            <Stack direction="row" gap={12}>
+              {onDelete ? (
+                <Button startIcon={Trash} onClick={onDelete} />
+              ) : null}
+              {onEdit ? (
+                <Button startIcon={PencilSimple} onClick={onEdit} />
+              ) : null}
+            </Stack>
+          ) : null}
           <Stack direction="column" gap={12}>
             {isLoading ? (
               <Shimmer width={200} dataTestId="name-loader" />
